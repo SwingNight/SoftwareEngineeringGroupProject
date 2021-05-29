@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link href='lib/main.css' rel='stylesheet' />
+		<script src='lib/main.js'></script>
+		<title></title>
+		<script>
+			 var evt = '[{"title": "CPT202 Lecture","start": "2021-05-03","end": "2021-5-04"},{"title": "CPT208 Lecture","start": "2021-05-05","end": "2021-05-07"}]';
+			var obj = JSON.parse(evt);
+			
+			document.addEventListener('DOMContentLoaded', function() {
+				var calendarlist = document.getElementById('calendar-list');
+
+				var calendar_list = new FullCalendar.Calendar(calendarlist, {
+					height: 'auto',
+					// stickyHeaderDates: false, // for disabling
+
+					headerToolbar: {
+						left: 'prev,next today',
+						center: 'title',
+						right: 'listWeek,listMonth,listYear'
+					},
+
+					// customize the button names,
+					// otherwise they'd all just say "list"
+					views: {
+						listWeek: {
+							buttonText: 'list week'
+						},
+						listMonth: {
+							buttonText: 'list month'
+						},
+						listYear: {
+							buttonText: 'list year'
+						}
+					},
+
+					initialView: 'listWeek',
+					timeZonw:'local',
+					//initialDate: '2020-09-12',
+					navLinks: true, // can click day/week names to navigate views
+					editable: true,
+					events: obj
+					// events: [
+					//   {
+					//     title: 'repeating event 1',
+					//     daysOfWeek: [ 1, 2, 3 ],
+					//     duration: '00:30'
+					//   },
+					//   {
+					//     title: 'repeating event 2',
+					//     daysOfWeek: [ 1, 2, 3 ],
+					//     duration: '00:30'
+					//   },
+					//   {
+					//     title: 'repeating event 3',
+					//     daysOfWeek: [ 1, 2, 3 ],
+					//     duration: '00:30'
+					//   }
+					// ]
+				});
+
+				calendar_list.render();
+			});
+		</script>
+		<style>
+			body {
+				margin: 40px 10px;
+				padding: 0;
+				font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+				font-size: 14px;
+			}
+
+			#calendar-list {
+				max-width: 1100px;
+				margin: 0 auto;
+			}
+
+			.fc .fc-list-event-title a {
+				color: #000;
+				text-decoration: none;
+			}
+
+			.fc .fc-button-primary {
+				color: #fff;
+				color: var(--fc-button-text-color, #fff);
+				background-color: #4f2f5e;
+				background-color: var(--fc-button-bg-color, #c6abcd);
+				/*198166205*/
+				border-color: #4f2f5e;
+				border-color: var(--fc-button-border-color, #c6abcd);
+				/*边框颜色*/
+			}
+
+			.fc .fc-button-primary:hover {
+				color: #fff;
+				color: var(--fc-button-text-color, #fff);
+				background-color: #4f2f5e;
+				background-color: var(--fc-button-hover-bg-color, #4f2f5e);
+				border-color: #4f2f5e;
+				border-color: var(--fc-button-hover-border-color, #4f2f5e);
+			}
+
+			.fc .fc-button-primary:not(:disabled):active,
+			.fc .fc-button-primary:not(:disabled).fc-button-active {
+				color: #fff;
+				color: var(--fc-button-text-color, #fff);
+				background-color: #4f2f5e;
+				background-color: var(--fc-button-active-bg-color, #4f2f5e);
+				/*选中后的颜色*/
+				border-color: #4f2f5e;
+				border-color: var(--fc-button-active-border-color, #c6abcd);
+			}
+
+			.fc .fc-button-primary:disabled {
+				/* not DRY today按键*/
+				color: #fff;
+				color: var(--fc-button-text-color, #fff);
+				background-color: #2C3E50;
+				background-color: var(--fc-button-bg-color, #4f2f5e);
+				border-color: #2C3E50;
+				border-color: var(--fc-button-border-color, #4f2f5e);
+				/* overrides :hover */
+			}
+
+			.fc .fc-button-primary:focus {
+				box-shadow: 0 0 0 0.2rem #a797ae;
+				/*选中后边框的颜色*/
+			}
+
+			.fc .fc-button-primary:not(:disabled):active:focus,
+			.fc .fc-button-primary:not(:disabled).fc-button-active:focus {
+				box-shadow: 0 0 0 0.2rem #a797ae;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='calendar-list'></div>
+	</body>
+</html>

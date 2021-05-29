@@ -1,0 +1,31 @@
+# Configure port
+server:
+  port: 8080
+spring:
+  # Configure the data source
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/workshop?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: 153806
+    type: com.alibaba.druid.pool.DruidDataSource
+# mybatis-plus The related configuration
+mybatis-plus:
+  # XML scan, with multiple directories separated by commas or semicolons (to tell the Mapper the location of the corresponding XML file)
+  mapper-locations: classpath:mapper/*.xml
+  # The following configurations have default values, which can be left unset
+  global-config:
+    db-config:
+      #The primary key type AUTO:"Database ID increment" INPUT:" user INPUT ID",ID_WORKER:" global unique ID (numeric type unique ID)", UUID:" global unique ID UUID";
+      id-type: auto
+      #Field strategy IGNORED:"Ignore the judgment"  NOT_NULL:"not NULL judge")  NOT_EMPTY:"Judge not empty"
+      field-strategy: NOT_EMPTY
+      #Database type
+      db-type: MYSQL
+  configuration:
+    # Whether to enable automatic hump naming convention mapping: A similar mapping from database column names to Java property hump names
+    map-underscore-to-camel-case: true
+    # False: If the query data is empty, the field will be hidden
+    call-setters-on-nulls: true
+    # This configuration prints out the executed SQL for use during development or testing
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

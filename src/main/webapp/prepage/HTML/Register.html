@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/Register.css" />
+    <script src="../JS/MyScript.js"></script>
+    <script src="../JS/register.js"></script>
+    <script src="../../js/jquery-3.5.1.js"></script>
+    <title>REGISTER PAGE</title>
+    <script>
+        !function (n) {
+            var e = n.document,
+                t = e.documentElement,
+                i = 640,
+                d = i / 100,
+                o = "orientationchange" in n ? "orientationchange" : "resize",
+                a = function () {
+                    var n = t.clientWidth || 320;
+                    n > 640 && (n = 640),
+                        t.style.fontSize = n / d + "px"
+                };
+            e.addEventListener && (n.addEventListener(o, a, !1), e.addEventListener("DOMContentLoaded", a, !1))
+        }(window);
+    </script>
+
+</head>
+
+<body>
+    <div class="maxbox">
+        <h1>REGISTRATION</h1>
+        <div class="inputbox">
+            <form>
+                <div class="inputText">
+                    <span>
+                        <p>Email Address: </p>
+                    </span>
+                    <span>
+                        <input type="text" class="textArea" id="registerEmail" />       
+                    </span>
+                </div>
+                <div class="inputText">
+                    <span>
+                        <p>Verification Code: </p>
+                    </span>
+                    <span>
+                        <input type="text" class="verarea" id="registerCode" />
+                        <input type="button" class="verbut" value="SEND" id="registerCodeButton"
+                            onclick="registerGetCode()" />
+                    </span>
+                </div>
+                <div class="inputText">
+                    <span>
+                        <p>Password: </p>
+                    </span>
+                    <span>
+                        <input type="password" class="textArea" id="registerPassword1" />
+                    </span>
+                </div>
+                <div class="inputText">
+                    <span>
+                        <p>Confirm Password: </p>
+                    </span>
+                    <span>
+                        <input type="password" class="textArea" id="registerPassword2"
+                            onblur="return checkPassword()" />
+                    </span>
+                </div>
+                <div class="inputText">
+                    <input class="inputButton" type="button" value="REGISTER" id="registerButton"
+                        onclick="registerSubmit()" />
+                </div>
+            </form>
+            <div>
+                <p class="comment">Already have an account ?<a href="Login.html">Login</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

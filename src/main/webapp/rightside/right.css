@@ -1,0 +1,150 @@
+.label {
+    border-style: none;
+    position: absolute;
+	left: 5%;
+    right: 5%;
+	top: 8%;  
+	width: 90%;
+	height: 90%;
+    overflow: auto;
+}
+
+.label::-webkit-scrollbar {
+    display: none;
+}
+
+.labelTitle {
+    border-style: none;
+    font-size: 2rem;
+    margin-top: 1%;
+    margin-bottom: 3%;
+    text-align: center;
+    color: #4c2d57;
+}
+
+.list {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    margin-top:5%;
+    margin-bottom: 2%;
+    margin-left: 1%;
+    margin-right: 1%;
+    border-radius: 15px;
+    text-align: center;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    box-shadow:1px 1px 5px rgb(44, 38, 38);
+}
+
+.list div {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    height: 5rem;
+    line-height: 5rem;
+    font-size:2rem;
+    color: #4f2f5e;
+}
+
+input[type=checkbox] {
+    visibility: hidden;
+}
+
+.checkboxFive {
+    width: 1.5rem;
+    position: relative;
+}
+
+/**
+* Create the box for the checkbox
+*/
+.checkboxFive label {
+    cursor: pointer;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    left: 2rem;
+    top: 1.5rem;
+    border: 3px solid;
+    border-radius: 5px;
+}
+
+/**
+* Display the tick inside the checkbox
+*/
+.checkboxFive label:after {
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 6px;
+    left: 7px;
+    border: 3px solid #4f2f5e;
+    border-top: none;
+    border-right: none;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+/**
+* Create the hover event of the tick
+*/
+.checkboxFive label:hover::after {
+    opacity: 0.5;
+}
+
+/**
+* Create the checkbox state for the tick
+*/
+.checkboxFive input[type=checkbox]:checked+label:after {
+    opacity: 1;
+}
+
+.daychoose {
+    vertical-align:middle;
+    font-size: 1.2rem;
+    width: 8.7rem;
+    height: 2rem;
+}
+
+.tasktitle {
+    position: absolute;
+    left: 5rem;
+    text-align: center;
+    height: 3rem;
+    font-size: 1.7rem;
+    line-height: 3rem;
+    max-width: 45%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap; 
+}
+
+.taskplace {
+    position: absolute;
+    margin-top: 2.5rem;
+    left: 5rem;
+    text-align: center;
+    height: 2rem;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    max-width: 11rem;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+.time {
+    text-align: center;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    line-height: 2.5rem;
+    color: #9a88a3;
+}

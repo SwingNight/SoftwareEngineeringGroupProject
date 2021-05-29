@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<style type="text/css">
+		.total {
+			position: absolute;
+			left: 0em;
+			top: 0em;
+			width: 100%;
+			height: 100%;
+			background: #9A88A3;
+			border-radius: 50px;
+		}
+
+		.mainpart {
+			position: absolute;
+			left: 2%;
+			top: 4.5%;
+			width: 96%;
+			height: 91%;
+			background: #FFFFFF;
+			border-radius: 40px;
+		}
+
+		.leftp {
+			position: absolute;
+			width: 20%;
+			height: 100%;
+			background: #FFFFFF;
+			border-radius: 40px;
+		}
+
+		.menu {
+			width: 90%;
+			height: 10%;
+			border-radius: 50px
+		}
+
+		#menu1 {
+			position: absolute;
+			left: 5%;
+			top: 30%;
+			background-color: rgb(198, 166, 205);
+		}
+
+		#menu2 {
+			position: absolute;
+			left: 5%;
+			top: 42%;
+		}
+
+		#menu3 {
+			position: absolute;
+			left: 5%;
+			top: 54%;
+		}
+
+		#menu4 {
+			position: absolute;
+			left: 5%;
+			top: 66%;
+		}
+
+		.nav-link {
+			font-size: 30px;
+			text-decoration: none
+		}
+
+		.midp {
+			position: absolute;
+			left: 20%;
+			top: 0%;
+			width: 57%;
+			height: 100%;
+			background-color: rgb(240, 237, 241);
+		}
+
+		.rightp {
+			position: absolute;
+			left: 77%;
+			top: 0%;
+			width: 23%;
+			height: 100%;
+			border-radius: 50px;
+			background-color: #FFFFFF;
+		}
+
+		.top {
+			position: absolute;
+			left: 16%;
+			top: 5%;
+			width: 70%;
+			height: 1.5%;
+			background-color: rgb(79, 47, 94);
+			border-radius: 30px
+		}
+	</style>
+
+	<script>
+		// get user's account
+		var thisURL = document.URL;
+		var urlEmail = thisURL.split('?')[1];
+		var email = window.decodeURIComponent(window.atob(urlEmail));
+	</script>
+	<script>
+		window.addEventListener('message', (e) => {
+			var clickDay = e.data;
+			clickHomeCalendar(clickDay);
+		}, false);
+	</script>
+
+	<script src="js/main.js"></script>
+	<script src="rightside/rightside.js"></script>
+	<script src="js/jquery-3.5.1.js"></script>
+	<link rel="stylesheet" href="rightside/right.css" />
+</head>
+
+<body onload="today()">
+	<div class="total">
+		<div class="mainpart">
+			<div class="leftp">
+				<img src="image/logo.jpg" style="max-width: 60%; position: absolute; left: 20%; top: 5%;" />
+				<a class="nav-link" href="home.html" target="my_iframe" onclick="cli()">
+					<div id="menu1" class="menu">
+						<img src="image/home.ico" width="50" height="50"
+							style="position: absolute; left: 10%; top:20%;">
+						<p style="position: absolute; top: -10%; left: 32%;">Home</p>
+					</div>
+				</a>
+				<a class="nav-link" href="calendermid.html" target="my_iframe" onclick="cli2()">
+					<div id="menu2" class="menu">
+						<img src="image/menu1.png" width="50" height="50"
+							style="position: absolute; left: 10%; top:20%;">
+						<p style="position: absolute; top: -10%; left: 31.5%;">Calendar</p>
+					</div>
+				</a>
+				<a class="nav-link" href="eventmid.html" target="my_iframe" onclick="cli3()">
+					<div id="menu3" class="menu">
+						<img src="image/menu2.png" width="50" height="50"
+							style="position: absolute; left: 10%; top:20%;">
+						<p style="position: absolute; top: -10%; left: 32%;">Event</p>
+					</div>
+				</a>
+				<a class="nav-link" href="userinfo/userinfo.html" target="my_iframe" onclick="cli4()">
+					<div id="menu4" class="menu">
+						<img src="image/menu3.png" width="50" height="50"
+							style="position: absolute; left: 10%; top:20%;">
+						<p style="position: absolute; top: -10%; left: 32%;">User</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="midp">
+				<iframe name="my_iframe" src="home.html" frameborder=0
+					style="width: 100%; height: 100%; border-radius: 20px;"></iframe>
+			</div>
+
+			<div class="rightp">
+				<div class="top"></div>
+				<div class="label" id="place">
+					<div class="labelTitle">
+						<span>
+							Events of
+						</span>
+						<span id="showDay" class="showDay">
+							<!-- <input type="date" id="theday" class="daychoose" onchange="change()"> -->
+						</span>
+					</div>
+					<img src="image/logo2.png" width=85% style="position: absolute; left: 5%; top:69%;">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

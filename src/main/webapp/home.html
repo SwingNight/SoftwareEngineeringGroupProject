@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<metaname=”viewport”content=”width=device-width,initial-scale=1″ />
+	<script src="js/jquery-3.5.1.js"></script>
+	<title></title>
+	<style type="text/css">
+		.home {
+			background-color: rgb(253, 253, 253);
+
+		}
+
+		/* 			.top {
+				position: absolute;
+				left: 7%;
+				top: 1%;
+				height: 8%;
+				width: 60%;
+			} */
+
+		/* 			.search {
+				position: absolute;
+				top: 5%;
+				height: 60%;
+				width: 50%;
+				border-radius: 20px;
+				border-width: 1px;
+			}
+
+			.button {
+				position: absolute;
+				top: 0%;
+				left: 53%;
+				height: 100%;
+				width: 8%;
+				background-color: rgb(240, 237, 241);
+				border-width: 0;
+			} */
+
+		.btn1 {
+			width: 50px;
+		}
+
+		.calender {
+			position: absolute;
+			left: 3.5%;
+			top: 3%;
+			width: 93%;
+			height: 52%;
+			border-style: solid;
+			border-width: 2px;
+			border-color: rgb(228, 225, 229);
+			border-radius: 30px;
+		}
+
+		.cd {
+			position: absolute;
+			left: 3.5%;
+			top: 58%;
+			width: 35%;
+			height: 39%;
+			/*background-color: rgba(111, 84, 123);*/
+			background: #fff;
+			border-radius: 30px;
+			overflow: hidden;
+			background: #fff;
+			color: #6F547B;
+		}
+
+		.cd:hover {
+			background-color: rgba(79, 47, 94, 0.6);
+			/*background-color: rgba(198, 166, 205, 0.1);*/
+			cursor: default;
+			color: #fff;
+		}
+
+		.pt1,
+		.pt2 {
+			width: 100%;
+			position: absolute;
+			left: 42%;
+			top: 58%;
+			width: 50%;
+			height: 16%;
+			background-color: rgb(238, 196, 165);
+			border-radius: 30px;
+			color: #263268;
+			padding: 10px 18px;
+			overflow: hidden;
+		}
+
+		.pt1:hover,
+		.pt2:hover {
+			background-color: rgb(238, 196, 125);
+		}
+
+		.pt2 {
+			top: 79%;
+		}
+
+		i {
+			font-size: 14px
+		}
+
+		body {
+			color: #ffffff
+		}
+
+		.time {
+			font-size: 20px;
+			text-align: center;
+		}
+
+		.time span {
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			padding: 10px;
+			border-radius: 5px;
+			line-height: 0px;
+		}
+
+		p {
+			font-size: 18px
+		}
+
+		span.red {
+			background: #ff0000
+		}
+
+		span.yg {
+			background: yellowgreen
+		}
+
+		span.or {
+			background: orange
+		}
+
+		span.pi {
+			background: palevioletred
+		}
+
+		span.pk {
+			background: #00a0e9
+		}
+
+		span p:first-child {
+			font-size: 25px
+		}
+
+		span p:last-child {
+			font-size: 14px
+		}
+
+		.countDown {
+			height: 100%;
+			position: relative;
+		}
+
+		.countDown-title {
+			font-size: 20px;
+			color: #fff;
+			background-color: rgba(111, 84, 123);
+			margin: 0;
+			height: 20%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.countDown-day {
+			text-align: center;
+			padding: 8% 0;
+			font-size: 42px;
+			font-weight: bold;
+		}
+
+		.countDown-day>div {
+			padding: 3% 0;
+		}
+
+		.pt1-constellation {
+			display: flex;
+			align-items: center;
+			color: #263268;
+		}
+
+		.pt1-constellation h3 {
+			font-size: 20px;
+			margin: 10px 10px 10px 0;
+		}
+
+		.pt1-constellation img {
+			width: 16px;
+			height: 16px;
+			margin-right: 6px;
+		}
+
+		.pt1-content {
+			font-size: 16px;
+			line-height: 36px;
+		}
+
+		.pt2-title {
+			display: flex;
+			align-items: center;
+			color: #263268;
+			font-size: 20px;
+			margin: 10px 0;
+		}
+
+		.pt2-title img {
+			width: 18px;
+			height: 18px;
+			margin-right: 10px;
+		}
+
+		.pt2-content {
+			height: 56%;
+			word-wrap: break-word;
+			font-size: 16px;
+			width: 100%;
+			white-space: normal;
+			margin: 0;
+		}
+	</style>
+</head>
+
+<body onload="tow()">
+
+	<div class="home">
+		<div class="calender">
+			<iframe src="datepicker/index2.html" width=100% height=100%
+				style="border-width: 0; border-radius: 30px;"></iframe>
+		</div>
+
+		<div class="cd">
+			<div class="countDown">
+				<h4 class="countDown-title">Time until (Next Event)</h4>
+				<div class="countDown-day">
+					<div><span id="d1"></span> day(s)</div>
+					<div>
+						<span id="h1"></span>:<span id="i1"></span>:<span id="s1"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="pt1">
+			<div class="pt1-constellation">
+				<h3>Taurus fortune</h3>
+				<img src="image/star.png" />
+				<img src="image/star.png" />
+				<img src="image/star.png" />
+				<img src="image/nostar.png" />
+				<img src="image/nostar.png" />
+			</div>
+			<div class="pt1-content">
+				<span>Fit the constellation： </span>
+				<span>Pisces</span>
+			</div>
+			<div class="pt1-content">
+				<span>Lucky color： </span>
+				<span>Red</span>
+			</div>
+		</div>
+		<div class="pt2">
+			<div class="pt2-title">
+				<span><b>A word of the day</b></span>
+			</div>
+			<p class="pt2-content">
+				An inch of time is an inch of gold but you can't buy that inch of time with aninch of gold.</p>
+		</div>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+<script>
+
+	let constellationIndex = Math.floor((Math.random() * constellation.length)); 
+	let constellationInfo = constellation[constellationIndex];
+	let starList = "";
+
+	for (let i = 0; i < constellationInfo.stars; i++) {
+		starList += '<img src="image/star.png"/>'
+	}
+
+	for (let j = 0; j < 5 - constellationInfo.stars; j++) {
+		starList += '<img src="image/nostar.png"/>'
+	}
+	let html_1 = '<div class="pt1-constellation">' +
+		'<h3 id="constellation-title">' + constellationInfo.englishName + ' fortune</h3>' +
+		starList +
+		'</div>' +
+		'<div class="pt1-content">' +
+		'<span>Fit the constellation： </span>' +
+		'<span>' + constellationInfo.agreeWith + '</span>' +
+		'</div>' +
+		'<div class="pt1-content">' +
+		'<span>Lucky color：  </span>' +
+		'<span>' + constellationInfo.color + '</span>' +
+		'</div>';
+	$(".pt1").html(html_1)
+
+	var inspirationalIndex = Math.floor((Math.random() * inspirational.length));
+	var inspirationalInfo = inspirational[inspirationalIndex];
+	$(".pt2-content").text(inspirationalInfo.english);
+
+	// count down part
+	var account = window.parent.parent.email;
+	console.log("This is para:" + account);
+
+	var oSpan = document.getElementById('y1');
+	var oSpan1 = document.getElementById('d1');
+	var oSpan2 = document.getElementById('h1');
+	var oSpan3 = document.getElementById('i1');
+	var oSpan4 = document.getElementById('s1');
+	// interface
+	function tow() {
+		$.get(
+			url = "/event/getLatest",
+			{ "account": account },
+			function (data) {
+				console.log(data);
+				var data = JSON.parse(data);
+				var newdate = data.newDate;
+				if (newdate.length < 12) {
+					newdate = newdate + " 00:00:00";
+				}
+				
+				var time = new Date(newdate);
+				var newTime = time.getTime();
+				
+				function getDate() {
+					var oDate = new Date(); //Get Date object
+					var oldTime = oDate.getTime(); //It's milliseconds from 1970
+					
+					var second = Math.floor((newTime - oldTime) / 1000); //Seconds from the present to the future
+					var day = Math.floor(second / 86400); //The integral part represents the day; One day has 24 * 60 * 60 = 86400 seconds;
+					second = second % 86400; //The remainder represents the number of seconds left;
+					var hour = Math.floor(second / 3600); //The integral part represents the hour;
+					second %= 3600; //The remainder represents the number of seconds left;
+					var minute = Math.floor(second / 60);
+					second %= 60;
+					
+					var str1 = to(hour),
+						str2 = to(minute),
+						str = to(day),
+						str3 = to(second);
+					oSpan1.innerHTML = str;
+					oSpan2.innerHTML = str1;
+					oSpan3.innerHTML = str2;
+					oSpan4.innerHTML = str3;
+				}
+
+				function to(n) {
+					return n >= 0 && n < 10 ? '0' + n : '' + n;
+				}
+
+				getDate();
+				setInterval(getDate, 1000);
+			},
+			type = "text"
+		)
+	}
+</script>

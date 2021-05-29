@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="userinfo.css" />
+    <script src="userinfo.js"></script>
+    <script src="../js/jquery-3.5.1.js"></script>
+    <title>User information page</title>
+</head>
+
+<body onload="load()">
+    <div class="main">
+        <div class="body">
+            <span>
+                <img class="defaultAvatar" src="default.png" alt="Error" title="Your Default Avatar">
+            </span>
+            <div class="text">
+                <form>
+                    <table>
+                        <tr>
+                            <td>Name: </td>
+                            <td>
+                                <input type="text" id="name" class="case">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Account: </td>
+                            <td id="acc"></td>
+                        </tr>
+                        <tr>
+                            <td>Password: </td>
+                            <td onclick="reset()" style="cursor: pointer; color: blue;text-decoration:underline;">
+                                Click to reset
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Birthday: </td>
+                            <td>
+                                <input type="date" id="birthday" class="case" value="2021-01-01">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Constellation: </td>
+                            <td>
+                                <select name="cars" id="cons" class="case">
+                                    <option>Aries</option>
+                                    <option>Taurus</option>
+                                    <option>Gemini</option>
+                                    <option>Cancer</option>
+                                    <option>Leo</option>
+                                    <option>Virgo</option>
+                                    <option>Libra</option>
+                                    <option>Scorpio</option>
+                                    <option>Sagittarius</option>
+                                    <option>Capricorn</option>
+                                    <option>Aquarius</option>
+                                    <option>Pisces</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <button class="button" id="save" onclick="save(id)">Save</button>
+                <button class="button" id="exit" onclick="exit()">Exit</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

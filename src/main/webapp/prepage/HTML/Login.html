@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/Login.css" />
+    <script src="../JS/MyScript.js"></script>
+    <script src="../JS/login.js"></script>
+    <script src="../../js/jquery-3.5.1.js"></script>
+    <title>LOGIN PAGE</title>
+    <script>
+        !function (n) {
+            var e = n.document,
+                t = e.documentElement,
+                i = 640,
+                d = i / 100,
+                o = "orientationchange" in n ? "orientationchange" : "resize",
+                a = function () {
+                    var n = t.clientWidth || 320;
+                    n > 640 && (n = 640),
+                        t.style.fontSize = n / d + "px"
+                };
+            e.addEventListener && (n.addEventListener(o, a, !1), e.addEventListener("DOMContentLoaded", a, !1))
+        }(window);
+    </script>
+</head>
+
+<body onload="defaultAccount()">
+    <div class="maxbox">
+        <h1>LOGIN</h1>
+        <div class="inputbox">
+            <form>
+                <div class="inputText">
+                    <span>
+                        Email Address:
+                    </span>
+                    <span>
+                        <input type="text" class="textArea" id="loginEmail" />
+                    </span>
+                </div>
+                <div class="inputText">
+                    <span>
+                        Password:
+                    </span>
+                    <span>
+                        <input type="password" class="textArea" id="loginPassword" />
+                    </span>
+                </div>
+                <div class="inputText">
+                    <input class="inputButton" type="button" value="LOGIN" id="loginButton" onclick="loginSubmit()" />
+                </div>
+            </form>
+            <div class="comment">
+                <p>Don't have an account ? <a href="Register.html">Sign Up</a></p>
+                <p>Forget your password ? <a href="EmailCheck.html">Reset</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

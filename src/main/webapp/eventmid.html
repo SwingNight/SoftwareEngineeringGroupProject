@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name=”viewport”content=”width=device-width,initial-scale=1″ />
+	<title></title>
+	<link href='lib/main.css' rel='stylesheet' />
+	<style type="text/css">
+		html,
+		body {
+			height: 98%;
+			overflow: hidden;
+			font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+			font-size: 14px;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		.search-box {
+			width: 90%;
+			margin: 0 auto;
+			position: absolute;
+			top: 3%;
+			left: 5%;
+			height: 8%;
+			border-radius: 100px;
+			border: 1px solid #C6ABCD;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.search-box input {
+			width: 100%;
+			height: 100%;
+			line-height: 100%;
+			padding: 0 28px;
+			outline-style: none;
+			font-size: 18px;
+			background: fff;
+			border: none;
+			border-radius: 100px;
+			color: #666;
+		}
+
+		.search-box button {
+			width: 58px;
+			margin-left: 20px;
+			border-radius: 50%;
+			height: 58px;
+			position: absolute;
+			right: -1px;
+			top: 50%;
+			transform: translate(0, -50%);
+			z-index: 2;
+			border: none;
+			background-image: url(image/search3.png);
+			background-color: #C6ABCD;
+			background-position: center;
+			background-size: 60%;
+			background-repeat: no-repeat;
+			cursor: pointer;
+			box-sizing: border-box;
+			outline: none;
+		}
+
+		.search-box button:hover {
+			background-color: #4F2F5E;
+		}
+
+		.search-history-list {
+			position: absolute;
+			top: 12%;
+			left: 8%;
+			z-index: 10;
+			background: #fff;
+			width: 80%;
+			height: auto;
+			max-height: 70%;
+			overflow-y: auto;
+			padding: 10px 16px;
+			box-sizing: border-box;
+			box-shadow: 0px 4px 10px -2px #4f2f5e;
+			display: none;
+		}
+
+		.search-history-list li {
+			margin: 5px 0;
+			padding: 5px 0;
+			color: #333;
+			cursor: pointer;
+		}
+
+		.search-history-list li.search-history-title,
+		.search-history-list li.search-history-clear {
+			color: #999;
+			font-size: 14px;
+			width: 200px;
+			padding: 10px 0;
+			white-space: nowrap;
+		}
+
+		.search-history-list li.search-history-title {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			margin-top: -5px;
+		}
+
+		.search-history-list li.search-history-clear {
+			padding-top: 15px;
+			cursor: pointer;
+		}
+
+		.border {
+			position: absolute;
+			left: 3.5%;
+			top: 15%;
+			width: 91%;
+			height: 78%;
+			border-radius: 20px;
+			background-color: rgb(251, 250, 251);
+			padding: 20px 10px;
+			overflow-y: auto;
+		}
+
+		#calendar-list {
+			max-width: 1100px;
+			margin: 0 auto;
+		}
+
+		.fc .fc-list-event-title a {
+			color: #000;
+			text-decoration: none;
+		}
+
+		.fc .fc-button-primary {
+			color: #fff;
+			color: var(--fc-button-text-color, #fff);
+			background-color: #4f2f5e;
+			background-color: var(--fc-button-bg-color, #c6abcd);
+			/*198166205*/
+			border-color: #4f2f5e;
+			border-color: var(--fc-button-border-color, #c6abcd);
+			/*边框颜色*/
+		}
+
+		.fc .fc-button-primary:hover {
+			color: #fff;
+			color: var(--fc-button-text-color, #fff);
+			background-color: #4f2f5e;
+			background-color: var(--fc-button-hover-bg-color, #4f2f5e);
+			border-color: #4f2f5e;
+			border-color: var(--fc-button-hover-border-color, #4f2f5e);
+		}
+
+		.fc .fc-button-primary:not(:disabled):active,
+		.fc .fc-button-primary:not(:disabled).fc-button-active {
+			color: #fff;
+			color: var(--fc-button-text-color, #fff);
+			background-color: #4f2f5e;
+			background-color: var(--fc-button-active-bg-color, #4f2f5e);
+			/*选中后的颜色*/
+			border-color: #4f2f5e;
+			border-color: var(--fc-button-active-border-color, #c6abcd);
+		}
+
+		.fc .fc-button-primary:disabled {
+			/* not DRY today按键*/
+			color: #fff;
+			color: var(--fc-button-text-color, #fff);
+			background-color: #2C3E50;
+			background-color: var(--fc-button-bg-color, #4f2f5e);
+			border-color: #2C3E50;
+			border-color: var(--fc-button-border-color, #4f2f5e);
+			/* overrides :hover */
+		}
+
+		.fc .fc-button-primary:focus {
+			box-shadow: 0 0 0 0.2rem #a797ae;
+			/*选中后边框的颜色*/
+		}
+
+		.fc .fc-button-primary:not(:disabled):active:focus,
+		.fc .fc-button-primary:not(:disabled).fc-button-active:focus {
+			box-shadow: 0 0 0 0.2rem #a797ae;
+		}
+
+		.fc-list-event {
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<form class="search-box">
+		<input id="searchInput" placeholder="Search for events to display" />
+		<button id="searchBtn" type="button"></button>
+	</form>
+	<ul class="search-history-list">
+		<li class="search-history-title">
+			<span>Search history</span>
+			<span id="close-history">Close</span>
+		</li>
+		<ul></ul>
+		<li id="clearHistory" class="search-history-clear">Clear search history</li>
+	</ul>
+	<div class="border">
+		<div id='calendar-list'></div>
+		<!--<iframe name="my_iframe" src="list_event.html" frameborder=0 style="width: 100%; height: 100%;"></iframe>-->
+	</div>
+</body>
+
+</html>
+<script src="js/jquery-3.5.1.js"></script>
+<script src='lib/main.js'></script>
+<script type="text/javascript">
+	var account = window.parent.email;
+	console.log("This is para:" + account);
+	var evt;
+	//var evt = '[{"title": "CPT202 Lecture","start": "2021-04-09","end": "2021-4-10"},{"title": "CPT202 Lecture","start": "2021-04-14","end": "2021-04-20"}]';
+	//evt = JSON.parse(evt);
+	$.ajax({
+		async: false,
+		type: "post",
+		url: "/event/getAll",
+		data: { "account": account },
+		datatype: 'text',
+		success: function (data) {
+			evt = data;
+		}
+	});
+
+	let calendarlist = document.getElementById('calendar-list');
+	let configObj = {
+		height: 'auto',
+		// stickyHeaderDates: false, // for disabling
+		headerToolbar: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'listWeek,listMonth,listYear'
+		},
+		// customize the button names,
+		// otherwise they'd all just say "list"
+		views: {
+			listWeek: {
+				buttonText: 'list week'
+			},
+			listMonth: {
+				buttonText: 'list month'
+			},
+			listYear: {
+				buttonText: 'list year'
+			}
+		},
+		initialView: 'listWeek',
+		timeZonw: 'local',
+		navLinks: true, // can click day/week names to navigate views
+		editable: true,
+		events: evt,  // 默认事件
+		eventClick: function (data, jsEvent, view) {
+			console.log(data.event) // 日程事件
+			// 日程区块，单击时触
+			var email = prompt("Please enter the email number to send", '');
+			var emailReg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+			if (email && emailReg.test(email)) {
+				$.ajax({
+					async: false,
+					type: "post",
+					url: "/event/sendEmail",
+					data: {
+						"account": account,
+						"email": email,
+						"content": "Schedule：" + data.event.startStr + " " + data.event.title,
+					},
+					datatype: 'text',
+					success: function (res) {
+						if (res.code == 200) {
+							alert("Send successfully, please wait for reply")
+						} else {
+							alert(res.msg)
+						}
+					}
+				});
+				setTimeout(() => {
+					alert("Please wait...")
+				}, 500)
+			} else {
+				alert("Wrong input")
+			}
+		},
+	}
+	let calendar_list = new FullCalendar.Calendar(calendarlist, configObj).render();
+
+	$("tr").on('click', function (e) {
+		console.log(e)
+	})
+	$("tr").click(function (e) {
+		console.log(e)
+	})
+	$("tr").on("click", function () {
+		//alert("hellworl");
+	})
+	$(".fc-list-table").on("click", function () {
+		// alert("hellworl");
+	})
+
+
+	//	点击搜索按钮
+	$("#searchBtn").click(function () {
+		$(".search-history-list").hide();
+		var value = $("#searchInput").val();
+		if (value) {
+			//设置查询记录缓存10条
+			let historyList = localStorage.getItem("historyList");
+			historyList = JSON.parse(historyList) || [];
+			historyList.unshift({ title: value });
+			historyList = historyList.slice(0, 10)
+			localStorage.setItem("historyList", JSON.stringify(historyList));
+
+			/* 在这里调用查询接口 */
+			alert(value)
+
+			$.post(
+				url = "/event/getEventBySearch",
+				{ "account": account, "title": value },
+				function (data) {
+					/* 在这里处理接口返回的数据 */
+					if (data.length > 0) {
+						configObj.initialDate = data[0].start;
+					}
+					configObj.events = data;
+					let calendar_list = new FullCalendar.Calendar(calendarlist, configObj).render();
+				}
+			)
+
+			// 事例  ↓  过后删除
+			//let evt = '[{"title": "CPT202 Lecture","start": "2021-04-09","end": "2021-4-10"},{"title": "CPT202 Lecture","start": "2021-04-14","end": "2021-04-20"}]';
+			//let obj = JSON.parse(evt);
+			//configObj.initialDate = obj[0].start;   // 当前日期
+			//configObj.events = obj;   // 当前日期事件
+			//let calendar_list = new FullCalendar.Calendar(calendarlist, configObj).render();
+			// 事例  ↑  过后删除
+		} else {
+			alert("请输入内容");
+		}
+	})
+
+	//	点击历史记录
+	$(".search-history-list").on("click", ".history-item", function () {
+		var text = $(this).text()
+		$("#searchInput").val(text)
+		$(".search-history-list").hide();
+	});
+	//	输入框事件
+	$("#searchInput").bind('input', function () {
+		$(".search-history-list").hide();
+		if ($(this).val() == '') {
+			showHistory()
+		}
+	}).bind('focus', function () {
+		if ($(this).val() == '') {
+			showHistory()
+		}
+	})
+	//	清空搜索历史
+	$("#clearHistory").click(function () {
+		localStorage.removeItem("historyList");
+		historyList = []
+		$(".search-history-list ul").text("暂无历史记录");
+	})
+	//	点击关闭历史记录弹窗
+	$(document).bind("click", function (e) {
+		var target = $(e.target);
+		if (target.closest("#searchInput").length == 0 && target.closest(".search-history-list").length == 0) { //点击id为parentId之外的地方触发
+			$(".search-history-list").hide();
+		}
+	})
+	$("#close-history").click(function () {
+		$(".search-history-list").hide();
+	})
+	//	追加显示历史记录
+	function showHistory() {
+		let historyList = localStorage.getItem("historyList");
+		historyList = JSON.parse(historyList) || [];
+		if (historyList.length > 0) {
+			let lis = "";
+			for (var i = 0; i < historyList.length; i++) {
+				lis += "<li class='history-item'>" + historyList[i].title + "</li>"
+			}
+			$(".search-history-list ul").html(lis);
+			$(".search-history-list").show()
+		}
+	}
+</script>

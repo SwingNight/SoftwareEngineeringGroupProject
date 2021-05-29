@@ -1,0 +1,85 @@
+body{
+	background-image: url(../image/logo-02.png);
+	background-repeat: no-repeat;
+	background-size: 30% auto;
+    background-position: top;
+}
+.maxbox{
+	margin: 20% auto; 
+	margin-top: 18%;
+	background-color: #9a88a3;
+	text-align: center;
+	width: 8rem;
+	height: 6.4rem;
+	border-radius: 45px;
+}
+
+h1{
+	padding-top: 0.5rem;
+	color:#efd9cd;
+	font-size: 0.5rem;
+}
+
+.inputbox{
+	margin-top: 0.1rem;
+	
+}
+
+.inputText{
+	font-size: 0;
+	height: 0.85rem;
+	color: white;
+}
+
+.verarea {
+	margin-bottom: 0.25rem;
+	font-size: 0.3rem;
+	color: #674b74;
+	width: 2rem;
+	height: 0.35rem;
+    display: inline-block;
+	vertical-align: middle;
+}
+
+.verbut {
+	margin-bottom: 0.25rem;
+	width: 0.5rem;
+	height: 0.4rem;
+	color: white;
+	background-color:  #eb8c8f;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.textArea {
+	font-size: 0.3rem;
+	color: #674b74;
+	width: 2.5rem;
+	height: 0.35rem;
+}
+
+.inputButton{
+	margin-top: 0.5rem;
+	border: 0;
+	width: 2rem;
+	height: 0.8rem;
+	font-size: 0.2rem;
+	border-radius: 45px;
+	color: white;
+	background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+}
+ .comment{
+	margin-top: 0.8rem;
+	color: #674b74;
+	font-size: 0.15rem;
+}
+
+span {
+	display: inline-block;
+	width: 2.8rem;
+	text-align: left;
+}
+
+p {
+	font-size: 0.3rem;
+}
