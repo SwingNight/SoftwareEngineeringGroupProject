@@ -1,10 +1,10 @@
 function checkEmail(email) {
-    var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+    var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //regular expression
     if (email == "") {
         alert("Please enter your email address.");
         return false;
     } else if (!reg.test(email)) {
-        alert("Email format error!");
+        alert("Email format error!\nPlease lowercase.");
         return false;
     } else {
         console.log("Email address Pass.");

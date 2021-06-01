@@ -81,11 +81,11 @@
 						            title: 'Add event',
 						            body:
 						                '<form><div class="form-group row">' +
-						                '<div class="col-3"><label for="text" class="col-form-label">Title</label></div>' +
-						                '<div class="col-9"><input type="text" class="form-control" id="title-input"/></div>' +
+						                '<div class="col-3"><label for="text" class="col-form-label">Title *</label></div>' +
+						                '<div class="col-9"><input type="text" class="form-control" id="title-input" placeholder="required field"/></div>' +
 										'</div>' +
 										'<div class="form-group row">' +
-										'<div class="col-3"><label for="select" class="col-form-label">Remind time</label></div>' +
+										'<div class="col-3"><label for="select" class="col-form-label">Remind time *</label></div>' +
 										'<div class="col-9"><select id="remindtime" class="form-control">' +
 										'<option value="">- - - -</option>' +
 										'<option value="1">1 hour</option><option value="2">2 hours</option><option value="3">3 hours</option><option value="6">6 hours</option><option value="12">12 hours</option><option value="24">1 day</option>' +
@@ -94,7 +94,7 @@
 										'<div class="form-group row">' +
 						                '<div class="col-3"><label for="select" class="col-form-label">Event grade</label></div>' +
 						                '<div class="col-9"><select id="select" class="form-control">' +
-						                '<option value="">- - - -</option>' +
+						                '<option value="">- -please select- -</option>' +
 						                '<option value="Red">Red</option><option value="Green">Green</option><option value="Blue">Blue</option>' +
 						                '</select></div>' +
 						                '</div>' +
@@ -197,7 +197,7 @@
 							arg.event.remove()
 							const obj = arg.event
 							const objToStr = JSON.stringify(obj)
-							alert(objToStr)
+							//alert(objToStr)
 							$.post(
 								url = "/event/delete", {event:objToStr},
 								function(data) {
@@ -211,7 +211,7 @@
 							)
 						}
 					},
-					editable: true,
+					editable: false,
 					dayMaxEvents: true, // allow "more" link when too many events
 
 					events: evt

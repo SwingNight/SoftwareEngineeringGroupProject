@@ -268,7 +268,7 @@
 			// 日程区块，单击时触
 			var email = prompt("Please enter the email number to send", '');
 			var emailReg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
-			if (email && emailReg.test(email)) {
+			if (email ) {
 				$.ajax({
 					async: false,
 					type: "post",
@@ -287,13 +287,13 @@
 						}
 					}
 				});
-				setTimeout(() => {
-					alert("Please wait...")
-				}, 500)
-			} else {
-				alert("Wrong input")
-			}
-		},
+				setTimeout(()=>{
+		    		alert("Please wait...")
+				},500)
+		    } else {
+		    	alert("Wrong input")
+		    }
+        },
 	}
 	let calendar_list = new FullCalendar.Calendar(calendarlist, configObj).render();
 
